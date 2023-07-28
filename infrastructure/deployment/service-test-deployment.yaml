@@ -1,0 +1,23 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: service-test-deployment
+  labels:
+    app: service-test
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: service-test
+  template:
+    metadata:
+      name: service-test-deployment
+      labels:
+        app: service-test
+    spec:
+      containers:
+      - name: service-test
+        image: dsgrilo/service-grilo:latest
+        imagePullPolicy: IfNotPresent
+      restartPolicy: Always
+      
